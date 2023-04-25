@@ -1,3 +1,5 @@
+
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -32,18 +34,32 @@
               Login
             </div>
             <div class="card-body">
-              <form>
+              <form action="validate_login.php" method="POST">
                 <div class="form-group">
-                  <input type="email" class="form-control" placeholder="E-mail">
+                  <input name="email" type="email" class="form-control" placeholder="Email">
                 </div>
                 <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Senha">
+                  <input name="password" type="password" class="form-control" placeholder="Password">
                 </div>
-                <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+                <button class="btn btn-lg btn-info btn-block" type="submit">Login</button>
               </form>
             </div>
           </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>
+
+<?php 
+
+  if(isset($_GET['login'])){
+    ?>
+    <script>
+    Swal.fire({
+      icon: 'error',
+      title: 'Email or Password Incorrect',
+      text: 'Please insert a valid user account',
+    });
+    </script>
+  <?php } ?>

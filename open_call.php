@@ -1,3 +1,5 @@
+<?php require_once "validate_acess.php";?>
+
 <html>
   <head>
     <meta charset="utf-8" />
@@ -21,6 +23,11 @@
         <img src="logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
         App Help Desk
       </a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="logoff.php">Logout</a>
+        </li>
+      </ul>
     </nav>
 
     <div class="container">    
@@ -29,41 +36,41 @@
         <div class="card-abrir-chamado">
           <div class="card">
             <div class="card-header">
-              Abertura de chamado
+              Open Call
             </div>
             <div class="card-body">
               <div class="row">
                 <div class="col">
                   
-                  <form>
+                  <form method="POST" action="register_call.php">
                     <div class="form-group">
-                      <label>Título</label>
-                      <input type="text" class="form-control" placeholder="Título">
+                      <label>Title</label>
+                      <input name="title" type="text" class="form-control" placeholder="Título">
                     </div>
                     
                     <div class="form-group">
-                      <label>Categoria</label>
-                      <select class="form-control">
-                        <option>Criação Usuário</option>
-                        <option>Impressora</option>
+                      <label>Category</label>
+                      <select name="category" class="form-control">
+                        <option>User Creation</option>
+                        <option>Printer</option>
                         <option>Hardware</option>
                         <option>Software</option>
-                        <option>Rede</option>
+                        <option>Network</option>
                       </select>
                     </div>
                     
                     <div class="form-group">
-                      <label>Descrição</label>
-                      <textarea class="form-control" rows="3"></textarea>
+                      <label>Description</label>
+                      <textarea name="description" class="form-control" rows="3"></textarea>
                     </div>
 
                     <div class="row mt-5">
                       <div class="col-6">
-                        <button class="btn btn-lg btn-warning btn-block" type="submit">Voltar</button>
+                        <a href="home.php" class="btn btn-lg btn-warning btn-block" type="submit">Back</a>
                       </div>
 
                       <div class="col-6">
-                        <button class="btn btn-lg btn-info btn-block" type="submit">Abrir</button>
+                        <button class="btn btn-lg btn-info btn-block" type="submit">Open</button>
                       </div>
                     </div>
                   </form>
@@ -74,5 +81,17 @@
           </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <?php 
+    if(isset($_GET['success'])){
+      ?>
+      <script>
+      Swal.fire({
+        icon: 'success',
+        title: 'Registered with success',
+        text: 'Call registered with sucess!',
+      });
+      </script>
+    <?php } ?>
   </body>
 </html>
